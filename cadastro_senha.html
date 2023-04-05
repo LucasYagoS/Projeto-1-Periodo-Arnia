@@ -19,7 +19,40 @@
 <body class="ps-5 pe-5 container-xxl">
     <main class="d-flex justify-content-center align-items-center pt-3 me-lg-5 ms-lg-5 mt-3">
         
-        <div class="card w-50 h-50 align-items-center" style="border-radius: 16px;">
+        
+    
+
+    
+        <div class="card w-50 h-50 align-items-center" style="border-radius: 16px;" id="div1">
+            <div class="card-body d-flex flex-column align-items-center">
+                <div class="mt-lg-5">
+                    <img class="img-fluid" src="imgs/logo_cadastro.png" alt="logo">
+                </div>
+                <h1 style="font-size: 18px; color: #00995D; font-weight: 500;" class="mt-4">Seja bem vindo(a)!</h1>
+                <h2 style="font-size: 16px; color: #00995D; font-weight: 400;">Preencha os campos para se cadastrar</h2>
+                <div class="">
+                    <div class="mt-3 mb-4 w-100">
+                        <label for="inputName" class="form-label">Nome</label>
+                        <input type="name" id="inputName" class="form-control"
+                            style="height: 47.92px; width: 23.69rem;">
+                    </div>
+                    <div>
+                        <label for="inputEmail" class="form-label">E-mail</label>
+                        <input type="email" id="inputEmail" class="form-control" style="height: 47.92px;">
+                    </div>
+                </div>
+                
+                    <div class="d-grid col-md-12 d-md-flex justify-content-md-end">
+                        
+                        <button onclick="next()" type="button" class="btn btn-success col-6 mt-3 mb-3 border-5 fw-bolder batata" style="height:47.92px;">
+                            Prosseguir ->
+                        </button>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="card w-50 h-50 align-items-center" style="border-radius: 16px;" id="div2">
             <div class="card-body d-flex flex-column align-items-center">
                 <div class="mt-lg-5">
                     <img class="img-fluid" src="imgs/logo_cadastro.png" alt="logo">
@@ -44,37 +77,6 @@
                     <div class="d-grid col-md-12 d-md-flex justify-content-md-end">
                         
                         <a type="button" href="cadastro_senha.html" class="btn btn-success col-6 mt-3 mb-3 border-5 fw-bold" style="height:47.92px;">
-                            Prosseguir ->
-                        </a>
-                    </div>
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="card w-50 h-50 align-items-center" style="border-radius: 16px; display: none;">
-            <div class="card-body d-flex flex-column align-items-center">
-                <div class="mt-lg-5">
-                    <img class="img-fluid" src="imgs/logo_cadastro.png" alt="logo">
-                </div>
-                <h1 style="font-size: 18px; color: #00995D; font-weight: 500;" class="mt-4">Seja bem vindo(a)!</h1>
-                <h2 style="font-size: 16px; color: #00995D; font-weight: 400;">Preencha os campos para se cadastrar</h2>
-                <div class="">
-                    <div class="mt-3 mb-4 w-100">
-                        <label for="inputName" class="form-label">Nome</label>
-                        <input type="name" id="inputName" class="form-control"
-                            style="height: 47.92px; width: 23.69rem;">
-                    </div>
-                    <div>
-                        <label for="inputEmail" class="form-label">E-mail</label>
-                        <input type="email" id="inputEmail" class="form-control" style="height: 47.92px;">
-                    </div>
-                </div>
-                
-                    <div class="d-grid col-md-12 d-md-flex justify-content-md-end">
-                        
-                        <a type="button" href="cadastro_senha.html" class="btn btn-success col-6 mt-3 mb-3 border-5 fw-bolder" style="height:47.92px;">
                             Prosseguir ->
                         </a>
                     </div>
