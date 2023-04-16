@@ -1,14 +1,4 @@
 {
   "medicos": [
-    {
-      "login": "adomawda",
-      "senha": "oadwmdoawm",
-      "pacientes": [
-        {
-          "secoes": [],
-          "fatos": []
-        }
-      ]
-    }
   ]
 }
