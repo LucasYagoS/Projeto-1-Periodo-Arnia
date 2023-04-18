@@ -1,9 +1,10 @@
 body {
-    background-image:linear-gradient(to bottom, rgba(225, 225, 225, 0.338), rgba(158, 156, 156, 0.201)), url(imgs/LogoX.png);
+    background-image: linear-gradient(to bottom, rgba(225, 225, 225, 0.338), rgba(158, 156, 156, 0.201)), url(imgs/LogoX.png);
     background-repeat: no-repeat;
     background-position: left;
     background-size: contain;
     height: 700px;
     background-color: #ebebeb;
 }
+
 

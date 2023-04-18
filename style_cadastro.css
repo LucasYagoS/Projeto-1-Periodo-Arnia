@@ -1,0 +1,45 @@
+h1 {
+    font-size: 18px;
+    color: #00995D;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 16px;
+    color: #00995D;
+    font-weight: 400;
+}
+
+#inputName {
+    height: 47.92px;
+    width: 23.69rem;
+}
+
+#inputPassword {
+    height: 47.92px;
+    width: 23.69rem;
+}
+
+#inputConfPass {
+    height: 47.92px;
+}
+
+#inputEmail{
+    height: 47.92px;
+}
+
+button{
+    height: 47.92px;
+}
+
+#div1,#div2{
+    border-radius: 16px;
+}
+
+.div2{
+    display: none;
+}
+
+.div1{
+    display: block;
+}

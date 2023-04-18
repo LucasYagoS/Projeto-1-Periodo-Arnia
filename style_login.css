@@ -1,0 +1,14 @@
+#cardLogin {
+    background-color: #017849;
+    border-radius: 16px;
+}
+
+input,
+button {
+    height: 47.92px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
