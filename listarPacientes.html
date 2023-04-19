@@ -37,11 +37,16 @@
             <h1>Meus pacientes</h1>
             <div class="card" id="card">
                 <div id="cardItens">
-                    <button id="addPacient">Novo Cadastro</button>
+                    <button onclick="openModal()" id="addPacient">Novo Cadastro</button>
                     <div id="filter">
                         <input type="text" placeholder="Pesquisar" id="inputSearch">
                         <button id="search">Filtrar</button>
                     </div>
+                </div>
+                <div class="m-5">
+                    <ul class="list-group list-group-horizontal d-flex text-center flex-column" id="listOfPacients">
+                        
+                    </ul>
                 </div>
             </div>
         </div>
@@ -49,12 +54,12 @@
         <!--MODAL DE CADASTRO DE PACIENTES-->
         <div id="modal">
             <div class="card" id="modalCard">
-            
+
                 <form class="container" id="formAddPacient">
                     <div class="row">
                         <div class="d-flex justify-content-between mt-4 mb-4">
                             <h2 id="modalTittle">Novo Paciente</h2>
-                            <button id="closeBtn"><img src="imgs/close-circle-fill.png" alt=""></button>
+                            <img onclick="closeModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
                         </div>
                         <div class="col-sm">
                             <label for="cpf" class="form-label">CPF</label>
@@ -103,8 +108,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <label for="cpf" class="form-label">CPF</label>
-                            <select id="cpf" class="form-control">
+                            <label for="civilState" class="form-label">Estado Civil</label>
+                            <select id="civilState" class="form-control">
                                 <option value=""></option>
                                 <option value="Solteiro(a)">Solteiro(a)</option>
                                 <option value="Casado(a)">Casado(a)</option>
@@ -121,16 +126,99 @@
                             <input type="text" id="father" class="form-control">
                         </div>
                     </div>
-            
-            
+
+
                 </form>
                 <div id="modalFooter">
-                    <button id="cancelBtn">Cancelar</button>
-                    <button id="createBtn">Criar</button>
+                    <button onclick="closeModal()" id="cancelBtn">Cancelar</button>
+                    <button onclick="addPacient()" id="createBtn">Criar</button>
                 </div>
             </div>
         </div>
-       
+        <div id="editModal">
+            <div class="card" id="modalCard">
+
+                <form class="container" id="formAddPacient">
+                    <div class="row">
+                        <div class="d-flex justify-content-between mt-4 mb-4">
+                            <h2 id="modalTittle">Editar dados do paciente</h2>
+                            <img onclick="closeModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
+                        </div>
+                        <div class="col-sm">
+                            <label for="cpfEdit" class="form-label">CPF</label>
+                            <input type="text" id="cpfEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="nameEdit" class="form-label">Nome</label>
+                            <input type="text" id="nameEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="birthDateEdit" class="form-label">Data de Nascimento</label>
+                            <input type="text" id="birthDateEdit" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="emailEdit" class="form-label">E-mail</label>
+                            <input type="text" id="emailEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="sexEdit" class="form-label">Sexo</label>
+                            <select id="sexEdit" class="form-control">
+                                <option value=""></option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="col-sm">
+                            <label for="countryEdit" class="form-label">Nacionalidade</label>
+                            <input type="text" id="countryEdit" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="originCountryEdit" class="form-label">Naturalidade</label>
+                            <input type="text" id="originCountryEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="professionEdit" class="form-label">Profissão</label>
+                            <input type="text" id="professionEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="scholarShipEdit" class="form-label">Escolaridade</label>
+                            <input type="text" id="scholarShipEdit" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="civilStateEdit" class="form-label">Estado Civil</label>
+                            <select id="civilStateEdit" class="form-control">
+                                <option value=""></option>
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Víuvo(a)">Víuvo(a)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm">
+                            <label for="motherEdit" class="form-label">Mãe</label>
+                            <input type="text" id="motherEdit" class="form-control">
+                        </div>
+                        <div class="col-sm">
+                            <label for="fatherEdit" class="form-label">Pai</label>
+                            <input type="text" id="fatherEdit" class="form-control">
+                        </div>
+                    </div>
+
+
+                </form>
+                <div id="modalFooter">
+                    <button onclick="closeEditModal()" id="cancelBtn">Cancelar</button>
+                    <button onclick="saveNewPacient()" id="createBtn">Salvar alterações</button>
+                </div>
+            </div>
+        </div>
+
 
     </main>
 
