@@ -135,6 +135,7 @@
                 </div>
             </div>
         </div>
+        <!--MODAL DE EDITAR PACIENTES-->
         <div id="editModal">
             <div class="card" id="modalCard">
 
@@ -142,7 +143,7 @@
                     <div class="row">
                         <div class="d-flex justify-content-between mt-4 mb-4">
                             <h2 id="modalTittle">Editar dados do paciente</h2>
-                            <img onclick="closeModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
+                            <img onclick="closeEditModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
                         </div>
                         <div class="col-sm">
                             <label for="cpfEdit" class="form-label">CPF</label>
@@ -209,7 +210,7 @@
                             <input type="text" id="fatherEdit" class="form-control">
                         </div>
                     </div>
-
+                    <div id="editId"></div>
 
                 </form>
                 <div id="modalFooter">

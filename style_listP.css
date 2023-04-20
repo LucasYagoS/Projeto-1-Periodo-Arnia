@@ -190,3 +190,7 @@ color: #00995D;
 li > img { 
     cursor: pointer;
 }
+
+#editId{
+    display: none;
+}

@@ -1,16 +1,24 @@
+//VARIAVEL PARA RECEBER O ID DO USUARIO ATUAL DA API
+let userId = 0
+//FUNÇÃO QUE PEGA OS USUARIOS DA API
 const getPosts = async () => {
     const apiResponse = await fetch('http://localhost:3000/users')
     const users = await apiResponse.json()
     console.log(users)
     return users
 }
-
+//FUNÇÃO QUE PEGA UM PACIENTE ESPECIFICO COM BASE NO ID DELE NA API
 const getPacient = async (id) => {
     const apiResponse = await fetch(`http://localhost:3000/pacients/${id}`)
     const pacient = await apiResponse.json()
     return pacient
 }
-
+const getDoc = async (userId) => {
+    const apiResponse = await fetch(`http://localhost:3000/users/${userId}`)
+    const doctor = await apiResponse.json()
+    return doctor
+}
+//FUNÇÃO QUE PEGA OS DADOS ESCRITOS PELO USUARIO NA ÁREA DE CADASTRO
 const addUser = async () => {
     const password = document.getElementById("inputPassword").value
     const confPass = document.getElementById("inputConfPass").value
@@ -24,7 +32,7 @@ const addUser = async () => {
         location.replace("C:/Users/Lucas Yago/OneDrive/Documentos/GitHub/Projeto-1-Periodo-Arnia/login.html")
     }
 }
-
+//FUNÇÃO QUE ADICIONA O OBJETO USUARIO NA API
 const createUser = async (user) => {
     await fetch("http://localhost:3000/users", {
         method: "POST",
@@ -35,7 +43,7 @@ const createUser = async (user) => {
         body: JSON.stringify(user)
     });
 }
-
+//FUNÇÃO PARA TROCAR DE CADASTRO
 const next = () => {
     const div1 = document.getElementById("div1")
     const div2 = document.getElementById("div2")
@@ -43,7 +51,7 @@ const next = () => {
     div1.style.display = "none"
     div2.style.display = "block"
 }
-
+//FUNÇÃO PARA FAZER LOGIN NA CONTA DO USUARIO
 const login = async () => {
     const userLogin = document.getElementById("inputLogin").value
     const userPassword = document.getElementById("loginPassword").value
@@ -55,12 +63,15 @@ const login = async () => {
         alert("Usuario não encontrado")
     }
 }
-let userId = 0
+
+//FUNÇÃO PARA LISTAR OS PACIENTES NA TELA
 const listPacients = async () => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-    userId = params.id;
-    console.log(userId);
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const params = Object.fromEntries(urlSearchParams.entries())
+    userId = params.id
+    console.log(userId)
+    const doctor = await getDoc(userId)
+    document.getElementById("docName").innerHTML = doctor.Nome
     const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}`)
     let pacients = await apiResponse.json()
     console.log(pacients)
@@ -81,16 +92,19 @@ const listPacients = async () => {
 
     });
 }
+//FUNÇÃO PARA ABRIR O MODAL DE CADASTRO DE PACIENTE
 const openModal = () => {
     document.getElementById("modal").style.display = "block"
 }
+//FUNÇÃO PARA FECHAR O MODAL DE EDITAR PACIENTE
 const closeEditModal = () => {
     document.getElementById("editModal").style.display = "none"
 }
+//FUNÇÃO PARA FECHAR O MODAL DE CADASTRO DE PACIENTE
 const closeModal = () => {
     document.getElementById("modal").style.display = "none"
 }
-
+//FUNÇÃO PARA CRIAR O OBJETO DE UM NOVO PACIENTE
 const addPacient = async () => {
     const pacient = {
         "cpf": document.getElementById("cpf").value,
@@ -112,7 +126,7 @@ const addPacient = async () => {
     closeModal()
     location.reload()
 }
-
+//FUNÇÃO PARA ADICIONAR O OBJETO DO PACIENTE NA API
 const createPacient = async (pacient) => {
     await fetch("http://localhost:3000/pacients", {
         method: "POST",
@@ -124,7 +138,7 @@ const createPacient = async (pacient) => {
     });
     clearForm()
 }
-
+//FUNÇÃO PARA LIMPAR O FORMULARIO DE CADASTRO
 const clearForm = () => {
     document.getElementById("cpf").value = ""
     document.getElementById("name").value = ""
@@ -139,14 +153,15 @@ const clearForm = () => {
     document.getElementById("mother").value = ""
     document.getElementById("father").value = ""
 }
-
+//FUNÇÃO PARA DELETAR UM PACIENTE
 const delPacient = async (id) => {
     await fetch(`http://localhost:3000/pacients/${id}`, {
         method: 'DELETE'
     })
     location.reload()
 }
-let currentId
+//VARIAVEL PARA RECEBER O ID DO PACIENTE QUE ESTÁ SENDO EDITADO
+let currentId = null
 const editPacient = async (id) => {
     const currentPacient = await getPacient(id)
     document.getElementById("cpfEdit").value = currentPacient.cpf
@@ -161,13 +176,15 @@ const editPacient = async (id) => {
     document.getElementById("civilStateEdit").value = currentPacient.estadoCivil
     document.getElementById("motherEdit").value = currentPacient.mae
     document.getElementById("fatherEdit").value = currentPacient.pai
-    
+
     document.getElementById("editModal").style.display = "block"
-    return currentId = currentPacient.id
+
+    currentId = id
+
 }
+//FUNÇÃO PARA SALVAR AS ALTERAÇÕES FEITAS NO USUSARIO EM UM OBJETO
+const saveNewPacient = async () => {
 
-
-const saveNewPacient = async (currentId) =>{
     const updatedPacient = {
         "cpf": document.getElementById("cpfEdit").value,
         "nome": document.getElementById("nameEdit").value,
@@ -184,16 +201,16 @@ const saveNewPacient = async (currentId) =>{
         "docId": userId
     }
 
-    await updatePacient(currentId , updatedPacient)
+    await updatePacient(currentId, updatedPacient)
     document.getElementById("editModal").style.display = "none"
 }
-
-const updatePacient = async (id , updatedPacient) =>{
+//FUNÇÃO PARA TROCAR O OJETO MODIFICADO COM O DO PACIENTE EM QUESTÃO NA API
+const updatePacient = async (id, updatedPacient) => {
     await fetch(`http://localhost:3000/pacients/${id}`, {
         method: "PUT",
         headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatedPacient)
     })
