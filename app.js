@@ -79,9 +79,9 @@ const listPacients = async () => {
     pacients.forEach(pacient => {
         pacientList.innerHTML += `
         <div class="row m-0 p-0">
-                            <li class="list-group-item col-2">${pacient.id}</li>
-                            <li class="list-group-item col-4">${pacient.nome}</li>
-                            <li class="list-group-item col-4">${pacient.cpf}</li>
+                            <li class="list-group-item col-2" onclick="previewPacient(${pacient.id})">${pacient.id}</li>
+                            <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.nome}</li>
+                            <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.cpf}</li>
                             <li class="list-group-item col-2">
                                 <img onclick="" src="imgs/form_icon.png" alt="">
                                 <img onclick="editPacient(${pacient.id})" src="imgs/edit_icon.png" alt="">
@@ -96,13 +96,24 @@ const listPacients = async () => {
 const openModal = () => {
     document.getElementById("modal").style.display = "block"
 }
-//FUNÇÃO PARA FECHAR O MODAL DE EDITAR PACIENTE
-const closeEditModal = () => {
-    document.getElementById("editModal").style.display = "none"
+//FUNÇÃO PARA FECHAR QUALQUER MODAL AO CLICKAR FORA DELE
+window.onclick = function (event) {
+    let editModal = document.getElementById("editModal")
+    let modal = document.getElementById("modal")
+    let modalPreview = document.getElementById("previewModal")
+    if (event.target == modal) {
+        modal.style.display = "none"
+    } else if (event.target == editModal) {
+        editModal.style.display = "none"
+    } else if (event.target == modalPreview) {
+        modalPreview.style.display = "none"
+    }
 }
 //FUNÇÃO PARA FECHAR O MODAL DE CADASTRO DE PACIENTE
 const closeModal = () => {
     document.getElementById("modal").style.display = "none"
+    document.getElementById("editModal").style.display = "none"
+    document.getElementById("previewModal").style.display = "none"
 }
 //FUNÇÃO PARA CRIAR O OBJETO DE UM NOVO PACIENTE
 const addPacient = async () => {
@@ -214,4 +225,63 @@ const updatePacient = async (id, updatedPacient) => {
         },
         body: JSON.stringify(updatedPacient)
     })
+}
+
+const previewPacient = async (id) => {
+    const currentPacient = await getPacient(id)
+    document.getElementById("cpfPreview").value = currentPacient.cpf
+    document.getElementById("namePreview").value = currentPacient.nome
+    document.getElementById("birthDatePreview").value = currentPacient.nascimento
+    document.getElementById("emailPreview").value = currentPacient.email
+    document.getElementById("sexPreview").value = currentPacient.sexo
+    document.getElementById("countryPreview").value = currentPacient.nacionalidade
+    document.getElementById("originCountryPreview").value = currentPacient.naturalidade
+    document.getElementById("professionPreview").value = currentPacient.profissão
+    document.getElementById("scholarShipPreview").value = currentPacient.escolaridade
+    document.getElementById("civilStatePreview").value = currentPacient.estadoCivil
+    document.getElementById("motherPreview").value = currentPacient.mae
+    document.getElementById("fatherPreview").value = currentPacient.pai
+
+    document.querySelector(".editModalTittle").innerText = "Visualizar Informações do Paciente"
+
+    document.getElementById("previewModal").style.display = "block"
+    let img = document.getElementById("editImg")
+    img.addEventListener("click", (id) => {
+        closeModal()
+        editPacient(id)
+    })
+
+
+}
+const filterPacients = async (userId) => {
+    const pacientListFiltered = document.getElementById("pacientsFiltered");
+    pacientListFiltered.innerHTML = ""
+    const searchParam = document.getElementById("inputSearch").value;
+    if (searchParam === "") {
+        document.getElementById("listPacients").style.display = "block";
+        document.getElementById("pacientsFiltered").style.display = "none";
+    } else {
+        document.getElementById("listPacients").style.display = "none";
+    
+    const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}&q=${searchParam}`);
+    const pacientsFiltered = await apiResponse.json();
+    console.log(pacientsFiltered);
+
+   
+    pacientsFiltered.forEach(pacient => {
+        pacientListFiltered.innerHTML += `
+                        <div class="row m-0 p-0">
+                            <li class="list-group-item col-2" onclick="previewPacient(${pacient.id})">${pacient.id}</li>
+                            <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.nome}</li>
+                            <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.cpf}</li>
+                            <li class="list-group-item col-2">
+                                <img onclick="" src="imgs/form_icon.png" alt="">
+                                <img onclick="editPacient(${pacient.id})" src="imgs/edit_icon.png" alt="">
+                                <img onclick="delPacient(${pacient.id})" src="imgs/delete_icon.png" alt="">
+                            </li>
+                        </div>
+        `
+    });
+}
+
 }

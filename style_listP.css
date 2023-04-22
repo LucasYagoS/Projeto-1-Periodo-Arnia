@@ -114,7 +114,11 @@ body {
     width: 80%;
     box-sizing: content-box;
 }
-#modal,#editModal,#viewModal{
+
+#modal,
+#editModal,
+#viewModal,
+#previewModal {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -175,22 +179,22 @@ select {
     color: #616161;
 }
 
-#modalTittle{
+#modalTittle {
     font-weight: 700;
-font-size: 24px;
-line-height: 29px;
-color: #00995D;
+    font-size: 24px;
+    line-height: 29px;
+    color: #00995D;
 }
 
-#formInput{
+#formInput {
     display: block;
     flex-direction: column;
 }
 
-li > img { 
+li>img {
     cursor: pointer;
 }
 
-#editId{
+#editId {
     display: none;
 }

@@ -40,11 +40,16 @@
                     <button onclick="openModal()" id="addPacient">Novo Cadastro</button>
                     <div id="filter">
                         <input type="text" placeholder="Pesquisar" id="inputSearch">
-                        <button id="search">Filtrar</button>
+                        <button id="search" onclick="filterPacients(userId)">Filtrar</button>
                     </div>
                 </div>
-                <div class="m-5">
+                <div class="m-5" id="listPacients">
                     <ul class="list-group list-group-horizontal d-flex text-center flex-column" id="listOfPacients">
+                        
+                    </ul>
+                </div>
+                <div class="m-5" id="filteredPacients">
+                    <ul class="list-group list-group-horizontal d-flex text-center flex-column" id="pacientsFiltered">
                         
                     </ul>
                 </div>
@@ -143,7 +148,7 @@
                     <div class="row">
                         <div class="d-flex justify-content-between mt-4 mb-4">
                             <h2 id="modalTittle">Editar dados do paciente</h2>
-                            <img onclick="closeEditModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
+                            <img onclick="closeModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
                         </div>
                         <div class="col-sm">
                             <label for="cpfEdit" class="form-label">CPF</label>
@@ -214,12 +219,94 @@
 
                 </form>
                 <div id="modalFooter">
-                    <button onclick="closeEditModal()" id="cancelBtn">Cancelar</button>
+                    <button onclick="closeModal()" id="cancelBtn">Cancelar</button>
                     <button onclick="saveNewPacient()" id="createBtn">Salvar alterações</button>
                 </div>
             </div>
         </div>
+        
+        <div id="previewModal">
+            <div class="card" id="modalCard">
 
+                <form class="container" id="formAddPacient">
+                    <div class="row">
+                        <div class="d-flex justify-content-between mt-4 mb-4">
+                            <div>
+                            <span id="modalTittle" class="editModalTittle">Editar dados do paciente</span>
+                            <img id="editImg" src="imgs/edit_icon.png" alt="">
+                            </div>
+                            <img onclick="closeModal()" id="closeBtn" src="imgs/close-circle-fill.png" alt="">
+                        </div>
+                        <div class="col-sm">
+                            <label for="cpfPreview" class="form-label">CPF</label>
+                            <input type="text" id="cpfPreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="namePreview" class="form-label">Nome</label>
+                            <input type="text" id="namePreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="birthDatePreview" class="form-label">Data de Nascimento</label>
+                            <input type="text" id="birthDatePreview" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="emailPreview" class="form-label">E-mail</label>
+                            <input type="text" id="emailPreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="sexPreview" class="form-label">Sexo</label>
+                            <select id="sexPreview" class="form-control" disabled>
+                                <option value=""></option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="col-sm">
+                            <label for="countryPreview" class="form-label">Nacionalidade</label>
+                            <input type="text" id="countryPreview" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="originCountryPreview" class="form-label">Naturalidade</label>
+                            <input type="text" id="originCountryPreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="professionPreview" class="form-label">Profissão</label>
+                            <input type="text" id="professionPreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="scholarShipPreview" class="form-label">Escolaridade</label>
+                            <input type="text" id="scholarShipPreview" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="civilStatePreview" class="form-label">Estado Civil</label>
+                            <select id="civilStatePreview" class="form-control" disabled>
+                                <option value=""></option>
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Víuvo(a)">Víuvo(a)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm">
+                            <label for="motherPreview" class="form-label">Mãe</label>
+                            <input type="text" id="motherPreview" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm">
+                            <label for="fatherPreview" class="form-label">Pai</label>
+                            <input type="text" id="fatherPreview" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div id="editId"></div>
+
+                </form>
+            </div>
+        </div>
 
     </main>
 
