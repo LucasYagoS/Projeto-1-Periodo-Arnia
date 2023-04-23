@@ -46,7 +46,8 @@ h1 {
 }
 
 #list {
-    width: 1284px;
+    width: 100%;
+    max-width: 1284px;
     height: 551px;
     margin-left: 8%;
 }
