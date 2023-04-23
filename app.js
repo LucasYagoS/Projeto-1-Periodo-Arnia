@@ -29,7 +29,7 @@ const addUser = async () => {
             "Senha": document.getElementById("inputPassword").value,
         }
         await createUser(user)
-        location.replace("login.html")
+        location.replace("index.html")
     }
 }
 //FUNÇÃO QUE ADICIONA O OBJETO USUARIO NA API
