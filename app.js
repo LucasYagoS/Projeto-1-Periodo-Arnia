@@ -262,7 +262,7 @@ const previewPacient = async (id) => {
     let img = document.getElementById("editImg")
     img.addEventListener("click", (id) => {
         closeModal()
-        editPacient(id)
+        editPacient(currentId)
     })
 
 
