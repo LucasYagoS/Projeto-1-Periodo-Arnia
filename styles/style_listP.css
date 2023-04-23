@@ -22,6 +22,9 @@ header {
     display: flex;
     background-color: #fff;
 }
+#welcome{
+    cursor: pointer;
+}
 
 /*LIST STYLE*/
 h1 {
