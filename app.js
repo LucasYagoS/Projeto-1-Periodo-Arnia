@@ -2,19 +2,19 @@
 let userId = 0
 //FUNÇÃO QUE PEGA OS USUARIOS DA API
 const getPosts = async () => {
-    const apiResponse = await fetch('http://localhost:3000/users')
+    const apiResponse = await fetch('https://projeto-arnia-modulo1.onrender.com/users')
     const users = await apiResponse.json()
     console.log(users)
     return users
 }
 //FUNÇÃO QUE PEGA UM PACIENTE ESPECIFICO COM BASE NO ID DELE NA API
 const getPacient = async (id) => {
-    const apiResponse = await fetch(`http://localhost:3000/pacients/${id}`)
+    const apiResponse = await fetch(`https://projeto-arnia-modulo1.onrender.com/pacients/${id}`)
     const pacient = await apiResponse.json()
     return pacient
 }
 const getDoc = async (userId) => {
-    const apiResponse = await fetch(`http://localhost:3000/users/${userId}`)
+    const apiResponse = await fetch(`https://projeto-arnia-modulo1.onrender.com/users/${userId}`)
     const doctor = await apiResponse.json()
     return doctor
 }
@@ -34,7 +34,7 @@ const addUser = async () => {
 }
 //FUNÇÃO QUE ADICIONA O OBJETO USUARIO NA API
 const createUser = async (user) => {
-    await fetch("http://localhost:3000/users", {
+    await fetch("https://projeto-arnia-modulo1.onrender.com/users", {
         method: "POST",
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -55,7 +55,7 @@ const next = () => {
 const login = async () => {
     const userLogin = document.getElementById("inputLogin").value
     const userPassword = document.getElementById("loginPassword").value
-    const apiResponse = await fetch(`http://localhost:3000/users?Email=${userLogin}&Senha=${userPassword}`)
+    const apiResponse = await fetch(`https://projeto-arnia-modulo1.onrender.com/users?Email=${userLogin}&Senha=${userPassword}`)
     const users = await apiResponse.json()
     if (users.length > 0) {
         location.replace("listarPacientes.html?id=" + users[0].id)
@@ -72,7 +72,7 @@ const listPacients = async () => {
     console.log(userId)
     const doctor = await getDoc(userId)
     document.getElementById("docName").innerHTML = doctor.Nome
-    const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}`)
+    const apiResponse = await fetch(`https://projeto-arnia-modulo1.onrender.com/pacients?docId=${userId}`)
     let pacients = await apiResponse.json()
     console.log(pacients)
     const pacientList = document.getElementById("listOfPacients")
@@ -153,7 +153,7 @@ const addPacient = async () => {
 }
 //FUNÇÃO PARA ADICIONAR O OBJETO DO PACIENTE NA API
 const createPacient = async (pacient) => {
-    await fetch("http://localhost:3000/pacients", {
+    await fetch("https://projeto-arnia-modulo1.onrender.com/pacients", {
         method: "POST",
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -180,7 +180,7 @@ const clearForm = () => {
 }
 //FUNÇÃO PARA DELETAR UM PACIENTE
 const delPacient = async (id) => {
-    await fetch(`http://localhost:3000/pacients/${id}`, {
+    await fetch(`https://projeto-arnia-modulo1.onrender.com/pacients/${id}`, {
         method: 'DELETE'
     })
     location.reload()
@@ -231,7 +231,7 @@ const saveNewPacient = async () => {
 }
 //FUNÇÃO PARA TROCAR O OJETO MODIFICADO COM O DO PACIENTE EM QUESTÃO NA API
 const updatePacient = async (id, updatedPacient) => {
-    await fetch(`http://localhost:3000/pacients/${id}`, {
+    await fetch(`https://projeto-arnia-modulo1.onrender.com/pacients/${id}`, {
         method: "PUT",
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -278,7 +278,7 @@ const filterPacients = async (userId) => {
     } else {
         document.getElementById("listPacients").style.display = "none";
 
-        const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}&q=${searchParam}`);
+        const apiResponse = await fetch(`https://projeto-arnia-modulo1.onrender.com/pacients?docId=${userId}&q=${searchParam}`);
         const pacientsFiltered = await apiResponse.json();
         console.log(pacientsFiltered);
 
