@@ -29,7 +29,7 @@ const addUser = async () => {
             "Senha": document.getElementById("inputPassword").value,
         }
         await createUser(user)
-        location.replace("C:/Users/Lucas Yago/OneDrive/Documentos/GitHub/Projeto-1-Periodo-Arnia/login.html")
+        location.replace("login.html")
     }
 }
 //FUNÇÃO QUE ADICIONA O OBJETO USUARIO NA API
@@ -58,7 +58,7 @@ const login = async () => {
     const apiResponse = await fetch(`http://localhost:3000/users?Email=${userLogin}&Senha=${userPassword}`)
     const users = await apiResponse.json()
     if (users.length > 0) {
-        location.replace("C:/Users/Lucas Yago/OneDrive/Documentos/GitHub/Projeto-1-Periodo-Arnia/listarPacientes.html?id=" + users[0].id)
+        location.replace("listarPacientes.html?id=" + users[0].id)
     } else {
         alert("Usuario não encontrado")
     }
@@ -83,7 +83,7 @@ const listPacients = async () => {
                             <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.nome}</li>
                             <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.cpf}</li>
                             <li class="list-group-item col-2">
-                                <img onclick="" src="imgs/form_icon.png" alt="">
+                            <a href="prontuario.html"><img onclick="" src="imgs/form_icon.png" alt=""></a>
                                 <img onclick="editPacient(${pacient.id})" src="imgs/edit_icon.png" alt="">
                                 <img onclick="delPacient(${pacient.id})" src="imgs/delete_icon.png" alt="">
                             </li>
@@ -95,6 +95,20 @@ const listPacients = async () => {
 //FUNÇÃO PARA ABRIR O MODAL DE CADASTRO DE PACIENTE
 const openModal = () => {
     document.getElementById("modal").style.display = "block"
+}
+//FUNÇÂO PARA ABRIR E FECHAR A LOGOUT BOX
+const openLogOutModal = async (userId) => {
+    const doc = await getDoc(userId)
+    const whiteCube = document.getElementById("whiteCube")
+    const logOutCard = document.getElementById("logOutCard")
+    if (whiteCube.style.display === "block") {
+        whiteCube.style.display = "none"
+        logOutCard.style.display = "none"
+    } else {
+        whiteCube.style.display = "block"
+        logOutCard.style.display = "block"
+    }
+    document.getElementById("docEmail").innerText = doc.Email
 }
 //FUNÇÃO PARA FECHAR QUALQUER MODAL AO CLICKAR FORA DELE
 window.onclick = function (event) {
@@ -226,7 +240,7 @@ const updatePacient = async (id, updatedPacient) => {
         body: JSON.stringify(updatedPacient)
     })
 }
-
+//FUNÇÃO PARA VISUALIZAR OS DADOS DO PACIENTE CADASTRADO
 const previewPacient = async (id) => {
     const currentPacient = await getPacient(id)
     document.getElementById("cpfPreview").value = currentPacient.cpf
@@ -253,6 +267,7 @@ const previewPacient = async (id) => {
 
 
 }
+//FUNÇÃO QUE FILTRA OS PACIENTES PELO QUE O USUARIO DIGITOU NA BARRA DE PESQUISA
 const filterPacients = async (userId) => {
     const pacientListFiltered = document.getElementById("pacientsFiltered");
     pacientListFiltered.innerHTML = ""
@@ -262,14 +277,14 @@ const filterPacients = async (userId) => {
         document.getElementById("pacientsFiltered").style.display = "none";
     } else {
         document.getElementById("listPacients").style.display = "none";
-    
-    const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}&q=${searchParam}`);
-    const pacientsFiltered = await apiResponse.json();
-    console.log(pacientsFiltered);
 
-   
-    pacientsFiltered.forEach(pacient => {
-        pacientListFiltered.innerHTML += `
+        const apiResponse = await fetch(`http://localhost:3000/pacients?docId=${userId}&q=${searchParam}`);
+        const pacientsFiltered = await apiResponse.json();
+        console.log(pacientsFiltered);
+
+
+        pacientsFiltered.forEach(pacient => {
+            pacientListFiltered.innerHTML += `
                         <div class="row m-0 p-0">
                             <li class="list-group-item col-2" onclick="previewPacient(${pacient.id})">${pacient.id}</li>
                             <li class="list-group-item col-4" onclick="previewPacient(${pacient.id})">${pacient.nome}</li>
@@ -281,7 +296,7 @@ const filterPacients = async (userId) => {
                             </li>
                         </div>
         `
-    });
-}
+        });
+    }
 
 }

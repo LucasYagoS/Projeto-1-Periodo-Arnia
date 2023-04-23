@@ -1,0 +1,220 @@
+#divHeader {
+    width: 100%;
+
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    height: 5rem;
+    font-size: 24px;
+    color: #017849;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    ;
+    height: 100%;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #fff;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 27px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #4F4F4F;
+}
+
+
+
+
+
+#cardItens {
+    display: flex;
+    justify-content: center;
+    gap: 500px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#search {
+    background: #017849;
+    border-radius: 0px 30px 30px 0px;
+    width: 115px;
+    height: 48px;
+    border-style: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#inputSearch {
+    width: 379px;
+    height: 48px;
+    border: 1px solid #BDBDBD;
+    border-radius: 24px 0px 0px 24px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    padding-left: 20px;
+    color: #828282;
+}
+
+#filter {
+    display: flex;
+}
+
+
+body {
+    background-color: #E5E5E5;
+}
+
+#tittle {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    gap: 250px;
+}
+
+#pacientInfo {
+    width: 340px;
+    height: 350px;
+    margin-left: 9%;
+    padding-left: 25px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#pacientInfo>img {
+    width: 13px;
+    height: 13px;
+}
+
+#pacientInfo>h1 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+}
+
+#pacientInfo>div>div>span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+    color: #00995D;
+}
+
+#pacientInfo>div>div>span>p {
+    color: #616161;
+    margin-left: 15px;
+}
+
+#btns {
+    display: flex;
+    justify-content: space-around;
+    width: 924px;
+    height: 80px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    align-items: center;
+}
+
+#bodyCards {
+    display: flex;
+    gap: 20px;
+}
+
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.section {
+    width: 924px;
+    height: 240px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-left: 5px solid #00995D;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 8px 8px 0px;
+    padding: 25px;
+    position: relative;
+}
+
+.section>div+div {
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.pacientHead {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 24px;
+    top: -20px;
+    background: #00995D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.relevantFact {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 924px;
+    height: 170px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-left: 5px solid #2F80ED;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 8px 8px 0px;
+    padding: 25px;
+    position: relative;
+}
+
+.relevantFact>div+div {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.pinLogoWhite {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 24px;
+    top: -20px;
+    background: #2F80ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+#backToTop {
+    margin-top: 50px;
+    margin-left: 43%;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+}
+
+#backToTop>a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    color: #212121;
+}

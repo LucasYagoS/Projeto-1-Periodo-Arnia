@@ -23,6 +23,12 @@
       "Email": "victor@victor",
       "Senha": "123456",
       "id": 16
+    },
+    {
+      "Nome": "Lucas Yago",
+      "Email": "lucas@lucas",
+      "Senha": "12345",
+      "id": 17
     }
   ],
   "pacients": [

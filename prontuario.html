@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wexer - Prontuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/style_prontuario.css">
+</head>
+
+<body>
+    <header class="d-flex">
+        <div class="d-flex justify-content-between align-items-center" id="divHeader">
+            <div id="logo">
+                <img src="imgs/logo_pequena.png" alt="">
+            </div>
+            <p onclick="openLogOutModal(userId)" class="pt-3" id="welcome">
+                Bem vindo(a), <span id="docName" class="fw-bolder">Daniel</span>
+                <img src="imgs/Mask.png" alt="arrowDown">
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <div id="tittle">
+            <h1>Meus pacientes</h1>
+
+            <div id="filter">
+                <input type="text" placeholder="Pesquisar" id="inputSearch">
+                <button id="search" onclick="filterPacients(userId)">Filtrar</button>
+            </div>
+        </div>
+        <div id="bodyCards">
+            <div class="card" id="pacientInfo">
+                <h1>Identificação do paciente</h1>
+                <div>
+                    <div>
+                        <img src="imgs/pacient.png" alt="pacient logo">
+                        <span>
+                            Paciente
+                            <p>Ana Ester Resende</p>
+                        </span>
+                    </div>
+                    <div>
+                        <img src="imgs/calendar.png" alt="calendar logo">
+                        <span>
+                            Nascimento
+                            <p>10/09/2000</p>
+                        </span>
+                    </div>
+                    <div>
+                        <img src="imgs/case.png" alt="case logo">
+                        <span>
+                            Profição
+                            <p>Designer</p>
+                        </span>
+                    </div>
+                    <div>
+                        <img src="imgs/book.png" alt="book logo">
+                        <span>
+                            Escolaridade
+                            <p>Superior incompleto</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="btns">
+                    <div>
+                        <img src="imgs/pacient head.png" alt="pacient head icon">
+                        <span>Sessão</span>
+                    </div>
+                    <div>
+                        <img src="imgs/pinIcon.png" alt="pin icon">
+                        <span>Fatos Relevantes</span>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="section">
+                    <div class="pacientHead">
+                        <img src="imgs/pacientHeadWhite.png" alt="pacient head icon">
+                    </div>
+                    <div>
+                        <h3>Seção 02</h3>
+                        <span>22 de setembro de 2022</span>
+                    </div>
+                    <p>
+                        A paciente relatou que estava tendo dificuldades com sua família e amigos próximos, pois
+                        demostra ansiedade diante de fatos cotidianos, resultando em reações de raiva com as pessoas que
+                        estão próximas a ela. Além disso, relatou brigas recentes com seus pais e namorado e, após a
+                        briga, ficou mal diante... <a href="#"> Ver mais</a>
+                    </p>
+
+
+                </div>
+                <div class="relevantFact">
+                    <div class="pinLogoWhite">
+                        <img src="imgs/pinLogoWhite.png" alt="pin logo white icon">
+                    </div>
+                    <div>
+                        <h3>Fato Relevante</h3>
+                        <span>15 de setembro de 2022</span>
+                    </div>
+                    <p>
+                        Cliente não compareceu.
+                    </p>
+
+
+                </div>
+                <div class="section">
+                    <div class="pacientHead">
+                        <img src="imgs/pacientHeadWhite.png" alt="pacient head icon">
+                    </div>
+                    <div>
+                        <h3>Seção 01</h3>
+                        <span>01 de setembro de 2022</span>
+                    </div>
+                    <p>
+                        A paciente relatou que estava tendo dificuldades com sua família e amigos próximos, pois
+                        demostra ansiedade diante de fatos cotidianos, resultando em reações de raiva com as pessoas que
+                        estão próximas a ela. Além disso, relatou brigas recentes com seus pais e namorado e, após a
+                        briga, ficou mal diante... <a href="#"> Ver mais</a>
+                    </p>
+                </div>
+                <div id="backToTop">
+                    <a href="#logo">
+                        <img src="imgs/arrowhead-up.png" alt=""> Voltar para o topo
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+</body>
+
+</html>
