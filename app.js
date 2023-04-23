@@ -241,8 +241,8 @@ const updatePacient = async (id, updatedPacient) => {
     })
 }
 //FUNÇÃO PARA VISUALIZAR OS DADOS DO PACIENTE CADASTRADO
-const previewPacient = async () => {
-    const currentPacient = await getPacient(currentId)
+const previewPacient = async (id) => {
+    const currentPacient = await getPacient(id)
     document.getElementById("cpfPreview").value = currentPacient.cpf
     document.getElementById("namePreview").value = currentPacient.nome
     document.getElementById("birthDatePreview").value = currentPacient.nascimento
@@ -262,7 +262,7 @@ const previewPacient = async () => {
     let img = document.getElementById("editImg")
     img.addEventListener("click", () => {
         closeModal()
-        editPacient(currentId)
+        editPacient(id)
     })
 
 
